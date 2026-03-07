@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+<style>
+   form{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+   }
+    
+</style>
+<div class="form_block  d-flex justify-content-center align-items-center" style="height: 90vh; background: #eee;" >
+    <form method="post" class="form bg-light p-5">
+        <h1 class="texr-center mb-3">Authentication</h1>
+        {% csrf_token %}
+        {% bootstrap_form form %} 
+        <button class="btn btn-sm w-100 btn-outline-primary"type="submit">Send</button>
+        <hr>
+        {% if request.path == "/register/" %}
+        <small>Have an Account? <a href="/">login now</a></small>
+        {% else %}
+        <small>Don't have an Account? <a href="/register/">register now</a></small>
+        {% endif %}
+    </form>
+</div>
+ 
+{% endblock %}

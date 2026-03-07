@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{% block content %}   
+    <style>
+        /* Loyihangizning umumiy foni (rasmdagidek) */
+        body {
+            background-color: #f0f2f5;
+            color: #333;
+        }
+
+        /* Kontaktlar kitobiga xos bo'lgan zamonaviy card stili */
+        .category-wrapper {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            padding: 25px;
+        }
+
+        /* Sarlavha qismi */
+        .header-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .header-section h3 {
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: -0.5px;
+        }
+
+        /* "Add Category" tugmasi loyiha rangiga mos (ko'k gradient) */
+        .btn-add {
+            background: linear-gradient(135deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            padding: 8px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: 0.3s;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-add:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,123,255,0.4);
+            color: white;
+        }
+
+        /* Har bir kategoriya bloki (rasmdagi ko'k bloklarga yaqin uslub) */
+        .cat-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f8f9fa;
+            margin-bottom: 12px;
+            padding: 15px 20px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: #444;
+            border: 1px solid transparent;
+            transition: 0.3s all ease;
+        }
+
+        .cat-item:hover {
+            background: #ffffff;
+            border-color: #007bff;
+            transform: scale(1.02);
+            color: #007bff;
+        }
+
+        .cat-left {
+            display: flex;
+            align-items: center;
+        }
+
+        .cat-icon {
+            width: 42px;
+            height: 42px;
+            background: #e7f1ff;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #007bff;
+            font-size: 1.2rem;
+        }
+
+        .cat-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        /* Back link */
+        .btn-back {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #adb5bd;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .btn-back:hover {
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="category-wrapper">
+        
+        <div class="header-section">
+            <h3 class="m-0 text-uppercase" style="font-size: 1.2rem;">Categories</h3>
+            <a href="/add_category/" class="btn-add">
+                <i class="fa-solid fa-plus me-1"></i> New
+            </a>
+        </div>
+
+        <div class="category-list">
+            {% for category in category %}
+            <a href="/contact_list/{{ category.id }}" class="cat-item">
+                <div class="cat-left">
+                    <div class="cat-icon">
+                        <i class="fa-solid fa-folder-closed"></i>
+                    </div>
+                    <span class="cat-name">{{ category.name }}</span>
+                </div>
+                <i class="fa-solid fa-chevron-right opacity-50">
+                </i>
+            </a>
+            {% empty %}
+            <div class="text-center py-4">
+                <p class="text-muted italic">No categories found.</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a href="/home" class="btn-back">
+            <i class="fa-solid fa-house me-1"></i> Back to Dashboard
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}

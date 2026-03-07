@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center" style="background-color: #f5f7fb;">
+    <div class="row justify-content-center w-100">
+        <div class="col-lg-5 col-md-8 col-sm-10">
+            
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="card-body p-4 p-md-5">
+                    
+                    <div class="d-flex align-items-center mb-5 pb-2">
+                        <div class="bg-primary bg-opacity-10 text-primary rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                            <i class="bi bi-pencil-square fs-4"></i>
+                        </div>
+                        <div>
+                            <h3 class="fw-bold text-dark mb-0">Update Contact</h3>
+                        </div>
+                    </div>
+                    <form method="POST" enctype="multipart/form-data" class="modern-form">
+                        {% csrf_token %}
+                        
+                        {% for field in form %}
+                        <div class="mb-4">
+                            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                            {{ field }}
+                            {% if field.errors %}
+                                <div class="text-danger small mt-1">{{ field.errors }}</div>
+                            {% endif %}
+                        </div>
+                        {% endfor %}
+                    
+                        <div class="d-grid gap-2 pt-3">
+                            <button type="submit" class="btn btn-save btn-lg rounded-pill fw-bold text-white shadow-sm py-3 transition-btn">
+                                Update Contact
+                            </button>
+                            <a href="/home/" class="btn btn-link text-decoration-none text-muted fw-medium py-2 mt-1">
+                                Cancel & Back
+                            </a>
+                        </div>
+                    </form>
+
+                    <!-- <form method="POST" enctype="multipart/form-data" class="modern-form">
+                        {% csrf_token %}
+                        
+                        <div class="mb-4">
+                            {{ form.as_p }}
+                        </div>
+
+                        <div class="d-grid gap-2 pt-3">
+                            <button type="submit" class="btn btn-save btn-lg rounded-pill fw-bold text-white shadow-sm py-3 transition-btn">
+                                Update Contact
+                            </button>
+                            
+                            <a href="/home/" class="btn btn-link text-decoration-none text-muted fw-medium py-2 mt-1">
+                                Cancel & Back
+                            </a>
+                        </div>
+                    </form> -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Premium Font Integration */
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+    body {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* * Target Django's {{ form.as_p }} to match 
+     * the modern UI in your image.
+     */
+    .modern-form p {
+        margin-bottom: 1.5rem; /* Space between fields */
+    }
+
+    .modern-form label {
+        display: block;
+        font-weight: 600;
+        color: #333;
+        font-size: 0.95rem;
+        margin-bottom: 0.6rem;
+    }
+
+    /* Target inputs, selects, textareas to look professional and clean */
+    .modern-form input[type="text"],
+    .modern-form input[type="email"],
+    .modern-form input[type="tel"],
+    .modern-form input[type="number"],
+    .modern-form input[type="password"],
+    .modern-form select,
+    .modern-form textarea {
+        display: block;
+        width: 100%;
+        padding: 0.9rem 1.1rem;
+        font-size: 1rem;
+        color: #333;
+        background-color: #fbfdff; /* Very slight blue tint for cleanliness */
+        border: 2px solid #e2e8f0;
+        border-radius: 12px;
+        transition: all 0.2s ease;
+    }
+
+    /* Modern Placeholder color */
+    .modern-form input::placeholder,
+    .modern-form textarea::placeholder {
+        color: #aab8c2;
+    }
+
+    /* Focus State - Cleaner and more visible */
+    .modern-form input:focus,
+    .modern-form select:focus,
+    .modern-form textarea:focus {
+        background-color: #fff;
+        border-color: #3182ce; /* Professional blue border on focus */
+        box-shadow: 0 0 0 4px rgba(49, 130, 206, 0.1); /* Soft glow */
+        outline: none;
+    }
+    
+    /* Special handling for File input (as seen in image 0) */
+    .modern-form input[type="file"] {
+        border: 2px dashed #e2e8f0; /* Dashed for file upload */
+        background-color: #f8fafc;
+        padding: 1.5rem 1rem;
+        text-align: center;
+        color: #718096;
+        cursor: pointer;
+    }
+    
+    .modern-form input[type="file"]:hover {
+        border-color: #3182ce;
+        color: #3182ce;
+    }
+
+    /* Textarea (Notes) special styling */
+    .modern-form textarea {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    /* * Button Styling - Replicating the professional 
+     * Green from image 1 but as an 'Update' button.
+     */
+    .btn-save {
+        background-color: #2fb177; /* The exact green from image 1 */
+        border: none;
+    }
+    
+    .btn-save:hover {
+        background-color: #289d69; /* Darker green on hover */
+        transform: translateY(-2px); /* Slight lift effect */
+        box-shadow: 0 8px 15px rgba(47, 177, 119, 0.25);
+        color: white;
+    }
+
+    /* Transition for buttons */
+    .transition-btn {
+        transition: all 0.2s ease;
+    }
+    
+    /* Utility class for rounded corners */
+    .rounded-4 { border-radius: 1rem !important; }
+
+</style>
+{% endblock %}

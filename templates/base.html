@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load bootstrap5 %}                                                           
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        body {
+            background-color: #f0f2f5;
+            padding-top: 50px;
+        }
+
+        /* Asosiy konteyner dizayni */
+        .main-wrapper {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        /* Yuqori qora panel */
+        .dashboard-header {
+            background-color: #232d3b;
+            color: white;
+            padding: 15px 25px;
+        }
+        /* Qidiruv inputi */
+        .search-box {
+            background: #344456;
+            border: none;
+            padding-left: 35px;
+        }
+        .search-box::placeholder { color: #a0aec0; }
+        
+        /* Kartalar uchun umumiy stil */
+        .custom-card {
+            border: none;
+            border-radius: 15px;
+            color: white;
+            transition: transform 0.2s;
+        }
+
+        .custom-card:hover {
+            transform: translateY(-5px);
+        } */
+
+        .card {
+            border: none !important; 
+            min-height: 70px;    
+            transition: all 0.3s ease-in-out;   
+            cursor: pointer;
+        }
+
+        .card:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            filter: brightness(1.1);
+        }
+
+
+        .card a {
+            text-decoration: none; /* Tagidagi chiziqni olib tashlaydi */
+        }
+
+        /* Yashil blok ichidagi har bir kategoriya uchun */
+        .main-stat-card {
+            background: linear-gradient(135deg, #5e72e4 0%, #825ee4 100%);
+            padding: 40px;
+        }
+        .add-btn {
+            background-color: white;
+            color: #5e72e4;
+            border: none;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    {% block content %} {% endblock %}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
